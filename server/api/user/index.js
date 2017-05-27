@@ -26,18 +26,18 @@ router.get('/getUser/:username', function(req, res){
         var username = req.params.username;
 
         // // CHECK REQ VALIDITY
-        
+            if(!req.body["password"] || !req.body["name"]){
+            result["success"] = 0;
+            result["error"] = "invalid request";
+            res.json(result);
+            return;
+        }
+
 
         // LOAD DATA & CHECK DUPLICATION
         fs.readFile( path.join(__dirname, '../../../data/user.json'),  function(err, data){
             
-            // if(!req.body["password"] || !req.body["name"]){
-        //     result["success"] = 0;
-        //     result["error"] = "invalid request";
-        //     res.json(result);
-        //     return;
-        // }
-
+        
             var users = JSON.parse(data);
             if(users[username]){
                 // DUPLICATION FOUND
