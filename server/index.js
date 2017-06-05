@@ -1,8 +1,18 @@
 var express = require('express');
 var ejs = require('ejs');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 var app = express();
 var path = require('path');
+var config = require('../config/server.config');
+var db = mongoose.connection
+
+db.on('error', console.error);
+db.once('open', function() {
+    console.log('conected..');
+})
+
+mongoose.connect(config.mongodbUri);
 
 // disable view-caching
 app.disable('view cache');
@@ -26,3 +36,4 @@ app.use('/', require('./www'));
 app.listen(3000, function () {
  console.log('rest api server listening on port 3000!');
 });
+
