@@ -1,6 +1,10 @@
 {
-	"first_user": {
-		"password": "first_pass",
-		"name": "abet"
+	"five_user": {
+		"password": "five_pass",
+		"name": "마마"
+	},
+	"seven_user": {
+		"password": "five_pass12",
+		"name": "z마마"
 	}
 }

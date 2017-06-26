@@ -6,6 +6,7 @@ var app = express();
 var path = require('path');
 var config = require('../config/server.config');
 var db = mongoose.connection
+var User = require('../models/user');
 
 db.on('error', console.error);
 db.once('open', function() {
